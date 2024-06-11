@@ -6,6 +6,10 @@
 let a1 = [4, 12, 4, 2, 15, 98];
 
 const f1 = () => {
+    let inputValue = Number(document.querySelector('.i-1').value);
+    console.log(inputValue);
+    let res = a1.indexOf(inputValue);
+    document.querySelector('.out-1').textContent = res
     // обратите внимание в массиве только ЧИСЛА!
 }
 
@@ -18,7 +22,9 @@ let a2 = [4, 12, 4, 2, 15, 98];
 
 const f2 = () => {
     // обратите внимание в массиве только ЧИСЛА!g('02');
-    //
+    let inputValue = Number(document.querySelector('.i-2').value);
+    let res = a2.indexOf(inputValue) === -1 ? false : a2.indexOf(inputValue);
+    document.querySelector('.out-2').textContent = res;
 }
 
 // TASK 03
@@ -29,6 +35,11 @@ const f2 = () => {
 let a3 = [4, 12, 4, 2, 15, 98];
 
 const f3 = () => {
+    let inputValue = Number(document.querySelector('.i-3').value);
+    let res = a2.indexOf(inputValue) === -1 ? false : true;
+    document.querySelector('.out-3').textContent = res;
+
+
 }
 
 // TASK 04
@@ -38,7 +49,11 @@ const f3 = () => {
 let a4 = [1, '1', 2, '2', '3'];
 
 const f4 = (arr, elem) => {
+    let res = arr.indexOf(elem);
+    document.querySelector('.out-4').textContent = res;
+
 }
+
 
 // TASK 05
 // По нажатию b-5 выполняется функция f5. Функция считывает значение из i-5-1 и индекс с которого начинается поиск в массиве с i-5-2 и с помощью indexOf и ищет данный элемент в массиве a5 c позиции указанной в i-5-2. Выводит в out-5 индекс если он есть в массиве, или -1 если нет.
@@ -52,6 +67,10 @@ const f4 = (arr, elem) => {
 let a5 = [22, 33, 44, 55, 66, 77, 88, 33, 44, 55, 66, 77];
 
 const f5 = () => {
+    let inputValue = Number(document.querySelector('.i-5-1').value);
+    let inputFrom = Number(document.querySelector('.i-5-2').value);
+    let res = a5.indexOf(inputValue, inputFrom);
+    document.querySelector('.out-5').textContent = res;
 }
 
 // TASK 06
@@ -62,6 +81,9 @@ const f5 = () => {
 let a6 = '987123abcdefyttb4';
 
 const f6 = () => {
+    let inputValue = document.querySelector('.i-6').value;
+    let arrRes = a6.split('').indexOf(inputValue);
+    document.querySelector('.out-6').textContent = arrRes;
 }
 
 // TASK 07
@@ -71,6 +93,15 @@ const f6 = () => {
 let a7 = [21, 22, 23, 24, 25, 26, 27];
 
 const f7 = (arr, elem) => {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === elem) {
+            document.querySelector('.out-7').textContent = i;
+            return;
+        };
+    }
+    document.querySelector('.out-7').textContent = -1;
+
+
 }
 
 // TASK 08 * - сложная
@@ -78,11 +109,21 @@ const f7 = (arr, elem) => {
 
 
 
-let a8 = [1, 2, 3, 1, 3, 2, 55, 23, 53, 24, 55,3, 1, 5, 2, 3, 5, 4,6,7,12, 53];
+let a8 = [1, 2, 3, 1, 3, 2, 55, 23, 53, 24, 55, 3, 1, 5, 2, 3, 5, 4, 6, 7, 12, 53];
 let res08 = [];
 
 const f8 = () => {
     // ваш код
+    let inputValue = Number(document.querySelector('.i-8').value);
+    for (let i = 0; i < a8.length; i++) {
+        console.log(a8.indexOf(inputValue, i))
+        if (a8.indexOf(inputValue, i) !== -1) {
+            if (a8.indexOf(inputValue, i) !== a8.indexOf(inputValue, i - 1)) {
+                res08.push(a8.indexOf(inputValue, i));
+            }
+        }
+    }
+
     document.querySelector('.out-8').innerHTML = res08;
 }
 
@@ -96,13 +137,26 @@ const f8 = () => {
 
 let a9 = [
     [55, 22, 33],
-    [3,4,22, 7],
+    [3, 4, 22, 7],
     [66, 2, 12, 55],
     [142, 12, 7, 15],
     [45, 12, 67, 32]
 ];
 
 const f9 = () => {
+    let inputValue = Number(document.querySelector('.i-9').value);
+    let out = ''
+    for (let i = 0; i < a9.length; i++) {
+        for (let k = 0; k < a9[i].length; k++) {
+            if (a9[i][k] === inputValue) {
+                // console.log(a9[i][k])
+                // console.log(inputValue)
+                out += a9.indexOf(a9[i]) + ' '
+            }
+        }
+    }
+    document.querySelector('.out-9').textContent = out;
+
 }
 
 // TASK 10
@@ -117,24 +171,33 @@ const f9 = () => {
 let a10 = [67, '55', 2, 5, '4', '8', 8, '66', '54', 11];
 
 const f10 = (arr, elem) => {
+    for (let i = 0; i < arr.length; i++) {
+        console.log(arr[i])
+        console.log(elem)
+        if (arr[i] == elem) {
+            return i;
+        }
+    }
+    return -1;
+
 }
 
 
 document.querySelector('.b-1').addEventListener('click', f1);
 document.querySelector('.b-2').addEventListener('click', f2);
 document.querySelector('.b-3').addEventListener('click', f3);
-document.querySelector('.b-4').addEventListener('click', ()=>{
-    f4(a4, '2'); // изучите какой индекс вывело. Разберитесь почему
-   // f4(a4, 2); // изучите какой индекс вывело. Разберитесь почему
+document.querySelector('.b-4').addEventListener('click', () => {
+    // f4(a4, '2'); // изучите какой индекс вывело. Разберитесь почему
+    f4(a4, 2); // изучите какой индекс вывело. Разберитесь почему
 });
 document.querySelector('.b-5').addEventListener('click', f5);
 document.querySelector('.b-6').addEventListener('click', f6);
-document.querySelector('.b-7').addEventListener('click', ()=>{
+document.querySelector('.b-7').addEventListener('click', () => {
     let num = +document.querySelector('.i-7').value;
     f7(a7, num);
 });
 document.querySelector('.b-8').addEventListener('click', f8);
 document.querySelector('.b-9').addEventListener('click', f9);
-document.querySelector('.b-10').addEventListener('click', ()=>{
+document.querySelector('.b-10').addEventListener('click', () => {
     document.querySelector('.out-10').innerHTML = f10(a10, 8);
 });
