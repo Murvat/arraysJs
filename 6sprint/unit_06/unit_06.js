@@ -6,6 +6,8 @@ let a1 = [5, 6, 7, 8, 44, 21, 43, 26, 78, 100, -2, 0, 17];
 let z1 = [];
 
 const f1 = () => {
+    z1 = a1.filter(item => item % 2 === 0);
+    console.log(z1);
 
 }
 
@@ -16,6 +18,8 @@ let a2 = [22, 33, 44, 55, 66, 77, 88, 99];
 let z2 = [];
 
 const f2 = () => {
+    z2 = a2.filter((item, index) => index % 2 === 0);
+    console.log(z2);
 
 }
 
@@ -27,6 +31,12 @@ let a3 = [2, 3, 4, 5, -6, 55, 1, 12, -3, 7, 4, 5, 2];
 let z3 = [];
 
 const f3 = () => {
+    z3 = a3
+        .map((item, index) => index)
+        .filter((index) => a3[index] > 4)
+
+
+    console.log(z3);
 
 }
 
@@ -38,7 +48,8 @@ let a4 = [3, -2, 4, 1, '9', -3, '0', true, 2, -8, undefined];
 let z4 = [];
 
 const f4 = () => {
-
+    z4 = a4.filter(item => typeof item !== 'number');
+    console.log(z4);
 }
 
 // TASK 05
@@ -48,6 +59,10 @@ let a5 = [[4, 5], [6, 7, 8], [12, 5], [47, 3, 54, 62], [5]]; // ожидаю [[4
 let z5 = [];
 
 const f5 = () => {
+    z5 = a5.filter(item => {
+        if (Array.isArray(item) && item.includes(5)) return true;
+    });
+    console.log(z5)
 
 }
 
@@ -58,7 +73,9 @@ let a6 = [[4, 5], [6, 7, 3], [12, 5], [47, 3, 54, 62], [5]]; // ожидаю [[6
 let z6 = [];
 
 const f6 = () => {
-
+    let sum = arr => arr.reduce((acc, init) => acc + init);
+    z6 = a6.filter(item => sum(item) % 2 === 0);
+    console.log(z6);
 }
 
 // TASK 07
@@ -74,7 +91,8 @@ let a7 = [
 let z7 = [];
 
 const f7 = () => {
-
+    z7 = a7.filter((item) => item['pass'].length <= 6);
+    console.log(z7)
 }
 
 // TASK 08
@@ -85,6 +103,15 @@ let z8 = [];
 let z8_2 = [];
 
 const f8 = () => {
+    z8 = a8.filter(item => {
+        if (item % 2 === 0) {
+            return true;
+        } else {
+            z8_2.push(item);
+        };
+    });
+    console.log(z8)
+    console.log(z8_2)
 
 }
 
@@ -95,6 +122,12 @@ let a9 = [6, 7, 9];
 let z9 = {}; // {6 : 6, 7: 7, 9: 9}
 
 const f9 = () => {
+
+    a9.forEach(item => {
+        z9[item] = item;
+    }
+    )
+    console.log(z9)
 }
 
 // TASK 10
@@ -105,11 +138,17 @@ let z10 = {}; // ожидаю {"best" : 12, "quest" : -6};
 
 const f10 = () => {
 
+    for (let key in a10) {
+        let res = callback10(a10[key])
+        if (typeof res === 'number') {
+            z10[key] = res;
+        }
+    }
+    console.log(z10)
 }
 
 function callback10(elem) {
-    // ваш код
-    // return
+    if (Math.abs(elem) > 5) return elem;
 }
 
 
