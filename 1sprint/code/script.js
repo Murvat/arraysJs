@@ -1,5 +1,5 @@
 // indexOf
-const a = [3, 9, 8, 7, 5, 3, 5, 2];
+const a= [3, 9, 8, 7, 5, 3, 5, 2];
 const b = ['Hi', 'hello'];
 // -1
 console.table(a);

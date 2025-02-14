@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "strict": true,
+    "rootDir": "./",
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["dom", "es6"] // <-- Add "dom" here
+  },
+  "include": ["**/*.ts", "1sprint/code/script.js"],
+  "exclude": ["node_modules"]
+}
